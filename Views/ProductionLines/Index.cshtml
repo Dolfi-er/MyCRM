@@ -1,0 +1,51 @@
+@model IEnumerable<MyCRM.Models.ProductionLine>
+
+@{
+    ViewData["Title"] = "Production Lines";
+}
+
+<h1>Production Lines</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New Production Line</a>
+</p>
+
+<div class="row">
+    @foreach (var line in Model)
+    {
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">@line.Name</h5>
+                    <span class="badge @(line.Status == "Active" ? "bg-success" : "bg-secondary")">
+                        @line.Status
+                    </span>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <strong>Efficiency Factor:</strong> @line.EfficiencyFactor.ToString("F2")
+                    </div>
+                    
+                    @if (line.CurrentWorkOrder != null)
+                    {
+                        <div class="alert alert-info">
+                            <h6>Currently Processing:</h6>
+                            <p class="mb-1"><strong>Product:</strong> @line.CurrentWorkOrder.Product.Name</p>
+                            <p class="mb-1"><strong>Quantity:</strong> @line.CurrentWorkOrder.Quantity units</p>
+                            <p class="mb-0"><strong>Estimated Completion:</strong> @line.CurrentWorkOrder.EstimatedEndDate.ToString("g")</p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-light">
+                            <p class="mb-0">No active work order</p>
+                        </div>
+                    }
+                </div>
+                <div class="card-footer">
+                    <a asp-action="Details" asp-route-id="@line.Id" class="btn btn-primary w-100">Manage Line</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

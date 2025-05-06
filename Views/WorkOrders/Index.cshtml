@@ -1,0 +1,95 @@
+@model MyCRM.ViewModels.WorkOrdersViewModel
+
+@{
+    ViewData["Title"] = "Work Orders";
+}
+
+<h1>Work Orders</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Work Order</a>
+</p>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <div class="d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Work Orders</h5>
+            <div class="d-flex">
+                <form asp-action="Index" method="get" class="d-flex">
+                    <select name="status" class="form-select me-2" onchange="this.form.submit()">
+                        <option value="">All Statuses</option>
+                        <option value="Pending" selected="@(Model.SelectedStatus == "Pending")">Pending</option>
+                        <option value="InProgress" selected="@(Model.SelectedStatus == "InProgress")">In Progress</option>
+                        <option value="Completed" selected="@(Model.SelectedStatus == "Completed")">Completed</option>
+                        <option value="Cancelled" selected="@(Model.SelectedStatus == "Cancelled")">Cancelled</option>
+                    </select>
+                    <input type="date" name="date" class="form-control me-2" value="@(Model.SelectedDate?.ToString("yyyy-MM-dd"))" onchange="this.form.submit()" />
+                    <button type="submit" class="btn btn-outline-primary">Filter</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Production Line</th>
+                    <th>Start Date</th>
+                    <th>Est. End Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.WorkOrders)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Product.Name</td>
+                        <td>@item.Quantity</td>
+                        <td>@(item.ProductionLine?.Name ?? "-")</td>
+                        <td>@item.StartDate.ToString("g")</td>
+                        <td>@item.EstimatedEndDate.ToString("g")</td>
+                        <td>
+                            <span class="badge @GetStatusBadgeClass(item.Status)">
+                                @item.Status
+                            </span>
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info">Details</a>
+                                @if (item.Status == "Pending")
+                                {
+                                    <form asp-action="Cancel" method="post" class="d-inline">
+                                        <input type="hidden" name="id" value="@item.Id" />
+                                        <button type="submit" class="btn btn-sm btn-outline-danger" 
+                                                onclick="return confirm('Are you sure you want to cancel this order?')">
+                                            Cancel
+                                        </button>
+                                    </form>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@functions {
+    public string GetStatusBadgeClass(string status)
+    {
+        return status switch
+        {
+            "Pending" => "bg-warning",
+            "InProgress" => "bg-primary",
+            "Completed" => "bg-success",
+            "Cancelled" => "bg-danger",
+            _ => "bg-secondary"
+        };
+    }
+}

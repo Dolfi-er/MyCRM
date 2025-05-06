@@ -1,0 +1,190 @@
+@model MyCRM.ViewModels.WorkOrderDetailsViewModel
+
+@{
+    ViewData["Title"] = "Work Order Details";
+    var workOrder = Model.WorkOrder;
+}
+
+<h1>Work Order #@workOrder.Id</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>Order Information</h5>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-4">Product</dt>
+                    <dd class="col-sm-8">@workOrder.Product.Name</dd>
+                    
+                    <dt class="col-sm-4">Quantity</dt>
+                    <dd class="col-sm-8">@workOrder.Quantity units</dd>
+                    
+                    <dt class="col-sm-4">Production Line</dt>
+                    <dd class="col-sm-8">@(workOrder.ProductionLine?.Name ?? "Not assigned")</dd>
+                    
+                    <dt class="col-sm-4">Start Date</dt>
+                    <dd class="col-sm-8">@workOrder.StartDate.ToString("g")</dd>
+                    
+                    <dt class="col-sm-4">Est. End Date</dt>
+                    <dd class="col-sm-8">@workOrder.EstimatedEndDate.ToString("g")</dd>
+                    
+                    <dt class="col-sm-4">Status</dt>
+                    <dd class="col-sm-8">
+                        <span class="badge @GetStatusBadgeClass(workOrder.Status)">
+                            @workOrder.Status
+                        </span>
+                    </dd>
+                </dl>
+                
+                @if (workOrder.Status == "InProgress")
+                {
+                    <div class="mt-3">
+                        <h6>Production Progress</h6>
+                        <div class="progress mb-3">
+                            @{
+                                var totalMinutes = (workOrder.EstimatedEndDate - workOrder.StartDate).TotalMinutes;
+                                var elapsedMinutes = (DateTime.Now - workOrder.StartDate).TotalMinutes;
+                                var progressPercent = Math.Min(100, Math.Max(0, (elapsedMinutes / totalMinutes) * 100));
+                            }
+                            <div class="progress-bar" role="progressbar" style="width: @progressPercent.ToString("F0")%"
+                                 aria-valuenow="@progressPercent.ToString("F0")" aria-valuemin="0" aria-valuemax="100">
+                                @progressPercent.ToString("F0")%
+                            </div>
+                        </div>
+                        
+                        <form asp-action="UpdateProgress" method="post" class="d-flex align-items-center">
+                            <input type="hidden" name="id" value="@workOrder.Id" />
+                            <input type="range" class="form-range me-2" id="progressRange" 
+                                   min="0" max="100" step="5" value="@progressPercent.ToString("F0")"
+                                   oninput="updateProgressValue(this.value)" />
+                            <input type="number" name="progressPercent" id="progressValue" 
+                                   class="form-control" style="width: 80px" min="0" max="100" step="5" 
+                                   value="@progressPercent.ToString("F0")" />
+                            <button type="submit" class="btn btn-outline-primary ms-2">Update</button>
+                        </form>
+                    </div>
+                }
+                
+                <div class="mt-3">
+                    @if (workOrder.Status == "Pending")
+                    {
+                        <form asp-action="Cancel" method="post" class="d-inline">
+                            <input type="hidden" name="id" value="@workOrder.Id" />
+                            <button type="submit" class="btn btn-danger" 
+                                    onclick="return confirm('Are you sure you want to cancel this order?')">
+                                Cancel Order
+                            </button>
+                        </form>
+                    }
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>Required Materials</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.MaterialRequirements.Any())
+                {
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Material</th>
+                                <th>Required</th>
+                                <th>Available</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.MaterialRequirements)
+                            {
+                                <tr>
+                                    <td>@item.Material.Name</td>
+                                    <td>@item.RequiredQuantity @item.Material.UnitOfMeasure</td>
+                                    <td>@item.Material.Quantity @item.Material.UnitOfMeasure</td>
+                                    <td>
+                                        @if (item.IsAvailable)
+                                        {
+                                            <span class="badge bg-success">Available</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-danger">Insufficient</span>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p class="text-muted">No materials defined for this product.</p>
+                }
+            </div>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>Production Time Calculation</h5>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-6">Base Production Time</dt>
+                    <dd class="col-sm-6">@workOrder.Product.ProductionTimePerUnit min/unit</dd>
+                    
+                    <dt class="col-sm-6">Quantity</dt>
+                    <dd class="col-sm-6">@workOrder.Quantity units</dd>
+                    
+                    <dt class="col-sm-6">Efficiency Factor</dt>
+                    <dd class="col-sm-6">@(workOrder.ProductionLine?.EfficiencyFactor.ToString("F1") ?? "1.0")</dd>
+                    
+                    <dt class="col-sm-6">Total Production Time</dt>
+                    @{
+                        float efficiencyFactor = workOrder.ProductionLine?.EfficiencyFactor ?? 1.0f;
+                        int totalMinutes = (int)Math.Ceiling(workOrder.Product.ProductionTimePerUnit * workOrder.Quantity / efficiencyFactor);
+                        var hours = totalMinutes / 60;
+                        var minutes = totalMinutes % 60;
+                    }
+                    <dd class="col-sm-6">@hours h @minutes min</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+@functions {
+    public string GetStatusBadgeClass(string status)
+    {
+        return status switch
+        {
+            "Pending" => "bg-warning",
+            "InProgress" => "bg-primary",
+            "Completed" => "bg-success",
+            "Cancelled" => "bg-danger",
+            _ => "bg-secondary"
+        };
+    }
+}
+
+@section Scripts {
+    <script>
+        function updateProgressValue(val) {
+            document.getElementById('progressValue').value = parseInt(val);
+        }
+        
+        document.getElementById('progressValue').addEventListener('change', function() {
+            let value = parseInt(this.value);
+            if (value < 0) value = 0;
+            if (value > 100) value = 100;
+            this.value = value;
+            document.getElementById('progressRange').value = value;
+        });
+    </script>
+}

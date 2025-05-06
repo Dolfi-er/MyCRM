@@ -1,0 +1,106 @@
+@model MyCRM.Models.Product
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<h1>Product Details</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>Basic Information</h5>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-4">Name</dt>
+                    <dd class="col-sm-8">@Model.Name</dd>
+                    
+                    <dt class="col-sm-4">Category</dt>
+                    <dd class="col-sm-8">@Model.Category</dd>
+                    
+                    <dt class="col-sm-4">Production Time</dt>
+                    <dd class="col-sm-8">@Model.ProductionTimePerUnit minutes per unit</dd>
+                    
+                    <dt class="col-sm-4">Minimal Stock</dt>
+                    <dd class="col-sm-8">@Model.MinimalStock units</dd>
+                </dl>
+            </div>
+        </div>
+        
+        @if (!string.IsNullOrEmpty(Model.Description))
+        {
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5>Description</h5>
+                </div>
+                <div class="card-body">
+                    <p>@Model.Description</p>
+                </div>
+            </div>
+        }
+        
+        @if (!string.IsNullOrEmpty(Model.Specifications))
+        {
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5>Specifications</h5>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        @{
+                            var specs = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, string>>(Model.Specifications);
+                            foreach (var spec in specs)
+                            {
+                                <dt class="col-sm-4">@spec.Key</dt>
+                                <dd class="col-sm-8">@spec.Value</dd>
+                            }
+                        }
+                    </dl>
+                </div>
+            </div>
+        }
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>Required Materials</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.ProductMaterials != null && Model.ProductMaterials.Any())
+                {
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Material</th>
+                                <th>Quantity</th>
+                                <th>Unit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var pm in Model.ProductMaterials)
+                            {
+                                <tr>
+                                    <td>@pm.Material.Name</td>
+                                    <td>@pm.QuantityNeeded</td>
+                                    <td>@pm.Material.UnitOfMeasure</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p class="text-muted">No materials defined for this product.</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

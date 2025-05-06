@@ -1,0 +1,97 @@
+@model IEnumerable<MyCRM.Models.Material>
+
+@{
+    ViewData["Title"] = "Materials";
+}
+
+<h1>Materials Management</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New Material</a>
+</p>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Materials Inventory</h5>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Unit</th>
+                    <th>Min. Stock</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>
+                            <span class="@(item.Quantity <= item.MinimalStock ? "text-danger" : "")">
+                                @item.Quantity
+                            </span>
+                        </td>
+                        <td>@item.UnitOfMeasure</td>
+                        <td>@item.MinimalStock</td>
+                        <td>
+                            <div class="btn-group">
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Edit</a>
+                                <button type="button" class="btn btn-sm btn-outline-success" 
+                                        data-bs-toggle="modal" data-bs-target="#replenishModal" 
+                                        data-material-id="@item.Id" data-material-name="@item.Name">
+                                    Replenish
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Replenish Modal -->
+<div class="modal fade" id="replenishModal" tabindex="-1" aria-labelledby="replenishModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form asp-action="UpdateStock" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="replenishModalLabel">Replenish Material</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="materialId" name="id" />
+                    <p>Add stock to: <span id="materialName"></span></p>
+                    <div class="mb-3">
+                        <label for="amount" class="form-label">Amount to Add</label>
+                        <input type="number" class="form-control" id="amount" name="amount" min="0" step="0.01" required />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add Stock</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const replenishModal = document.getElementById('replenishModal');
+            replenishModal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                const materialId = button.getAttribute('data-material-id');
+                const materialName = button.getAttribute('data-material-name');
+                
+                document.getElementById('materialId').value = materialId;
+                document.getElementById('materialName').textContent = materialName;
+            });
+        });
+    </script>
+}

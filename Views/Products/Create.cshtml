@@ -1,0 +1,179 @@
+@model MyCRM.ViewModels.ProductCreateViewModel
+
+@{
+    ViewData["Title"] = "Create Product";
+}
+
+<h1>Create New Product</h1>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5>Basic Information</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label asp-for="Product.Name" class="form-label">Name</label>
+                        <input asp-for="Product.Name" class="form-control" required />
+                        <span asp-validation-for="Product.Name" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="Product.Description" class="form-label">Description</label>
+                        <textarea asp-for="Product.Description" class="form-control" rows="3"></textarea>
+                        <span asp-validation-for="Product.Description" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="Product.Category" class="form-label">Category</label>
+                        <input asp-for="Product.Category" class="form-control" />
+                        <span asp-validation-for="Product.Category" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="Product.ProductionTimePerUnit" class="form-label">Production Time (minutes per unit)</label>
+                        <input asp-for="Product.ProductionTimePerUnit" class="form-control" type="number" min="1" required />
+                        <span asp-validation-for="Product.ProductionTimePerUnit" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="Product.MinimalStock" class="form-label">Minimal Stock</label>
+                        <input asp-for="Product.MinimalStock" class="form-control" type="number" min="0" />
+                        <span asp-validation-for="Product.MinimalStock" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Specifications</h5>
+                    <button type="button" class="btn btn-sm btn-outline-primary" id="addSpecBtn">Add Specification</button>
+                </div>
+                <div class="card-body">
+                    <div id="specificationsContainer">
+                        <!-- Specifications will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Required Materials</h5>
+                    <button type="button" class="btn btn-sm btn-outline-primary" id="addMaterialBtn">Add Material</button>
+                </div>
+                <div class="card-body">
+                    <div id="materialsContainer">
+                        <!-- Materials will be added here dynamically -->
+                    </div>
+                    
+                    @if (!Model.AvailableMaterials.Any())
+                    {
+                        <div class="alert alert-warning">
+                            No materials available. <a asp-controller="Materials" asp-action="Create">Add materials</a> first.
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mt-3">
+        <button type="submit" class="btn btn-primary">Create Product</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+
+<!-- Material Template (hidden) -->
+<template id="materialTemplate">
+    <div class="material-entry border rounded p-3 mb-3">
+        <div class="d-flex justify-content-between mb-2">
+            <h6>Material</h6>
+            <button type="button" class="btn btn-sm btn-outline-danger remove-material">Remove</button>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Material</label>
+            <select name="selectedMaterials" class="form-select" required>
+                <option value="">Select Material</option>
+                @foreach (var material in Model.AvailableMaterials)
+                {
+                    <option value="@material.Id">@material.Name (@material.UnitOfMeasure)</option>
+                }
+            </select>
+        </div>
+        <div class="mb-0">
+            <label class="form-label">Quantity Needed Per Unit</label>
+            <input type="number" name="quantities" class="form-control" min="0.01" step="0.01" required />
+        </div>
+    </div>
+</template>
+
+<!-- Specification Template (hidden) -->
+<template id="specificationTemplate">
+    <div class="specification-entry border rounded p-3 mb-3">
+        <div class="d-flex justify-content-between mb-2">
+            <h6>Specification</h6>
+            <button type="button" class="btn btn-sm btn-outline-danger remove-spec">Remove</button>
+        </div>
+        <div class="row">
+            <div class="col-md-5 mb-3">
+                <label class="form-label">Name</label>
+                <input type="text" name="SpecificationsDict.Keys" class="form-control" required />
+            </div>
+            <div class="col-md-7 mb-3">
+                <label class="form-label">Value</label>
+                <input type="text" name="SpecificationsDict.Values" class="form-control" required />
+            </div>
+        </div>
+    </div>
+</template>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add Material
+            const addMaterialBtn = document.getElementById('addMaterialBtn');
+            const materialsContainer = document.getElementById('materialsContainer');
+            const materialTemplate = document.getElementById('materialTemplate');
+            
+            addMaterialBtn.addEventListener('click', function() {
+                const materialEntry = document.importNode(materialTemplate.content, true);
+                materialsContainer.appendChild(materialEntry);
+                
+                // Add event listener to the remove button
+                const removeBtn = materialsContainer.lastElementChild.querySelector('.remove-material');
+                removeBtn.addEventListener('click', function() {
+                    this.closest('.material-entry').remove();
+                });
+            });
+            
+            // Add Specification
+            const addSpecBtn = document.getElementById('addSpecBtn');
+            const specificationsContainer = document.getElementById('specificationsContainer');
+            const specificationTemplate = document.getElementById('specificationTemplate');
+            
+            addSpecBtn.addEventListener('click', function() {
+                const specEntry = document.importNode(specificationTemplate.content, true);
+                specificationsContainer.appendChild(specEntry);
+                
+                // Add event listener to the remove button
+                const removeBtn = specificationsContainer.lastElementChild.querySelector('.remove-spec');
+                removeBtn.addEventListener('click', function() {
+                    this.closest('.specification-entry').remove();
+                });
+            });
+            
+            // Add at least one material entry by default if materials are available
+            if (@Json.Serialize(Model.AvailableMaterials.Any())) {
+                addMaterialBtn.click();
+            }
+        });
+    </script>
+}

@@ -1,0 +1,60 @@
+@model MyCRM.ViewModels.ProductsViewModel
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h1>Products Management</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New Product</a>
+</p>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <div class="d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Product Catalog</h5>
+            <div>
+                <form asp-action="Index" method="get" class="d-flex">
+                    <select name="category" class="form-select me-2" onchange="this.form.submit()">
+                        <option value="">All Categories</option>
+                        @foreach (var category in Model.Categories)
+                        {
+                            <option value="@category" selected="@(category == Model.SelectedCategory)">@category</option>
+                        }
+                    </select>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Production Time (min/unit)</th>
+                    <th>Min. Stock</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Products)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Category</td>
+                        <td>@item.ProductionTimePerUnit</td>
+                        <td>@item.MinimalStock</td>
+                        <td>
+                            <div class="btn-group">
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info">Details</a>
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Edit</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

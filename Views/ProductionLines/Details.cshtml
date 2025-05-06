@@ -1,0 +1,259 @@
+@model MyCRM.ViewModels.ProductionLineDetailsViewModel
+
+@{
+    ViewData["Title"] = "Production Line Details";
+    var productionLine = Model.ProductionLine;
+}
+
+<h1>Production Line: @productionLine.Name</h1>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>Line Status</h5>
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div>
+                        <h6>Current Status:</h6>
+                        <span class="badge @(productionLine.Status == "Active" ? "bg-success" : "bg-secondary") fs-6">
+                            @productionLine.Status
+                        </span>
+                    </div>
+                    <div>
+                        @if (productionLine.Status == "Active")
+                        {
+                            <form asp-action="UpdateStatus" method="post" class="d-inline">
+                                <input type="hidden" name="id" value="@productionLine.Id" />
+                                <input type="hidden" name="status" value="Stopped" />
+                                <button type="submit" class="btn btn-danger">Stop Line</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <button type="button" class="btn btn-success" 
+                                    @(Model.PendingWorkOrders.Any() ? "" : "disabled")
+                                    data-bs-toggle="modal" data-bs-target="#startWorkOrderModal">
+                                Start Line
+                            </button>
+                        }
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <h6>Efficiency Factor:</h6>
+                    <form asp-action="UpdateEfficiency" method="post" class="d-flex align-items-center">
+                        <input type="hidden" name="id" value="@productionLine.Id" />
+                        <input type="range" class="form-range me-2" id="efficiencyRange" 
+                               min="0.5" max="2.0" step="0.1" value="@productionLine.EfficiencyFactor"
+                               oninput="updateEfficiencyValue(this.value)" />
+                        <input type="number" name="efficiencyFactor" id="efficiencyValue" 
+                               class="form-control" style="width: 80px" min="0.5" max="2.0" step="0.1" 
+                               value="@productionLine.EfficiencyFactor.ToString("F1")" />
+                        <button type="submit" class="btn btn-outline-primary ms-2">Update</button>
+                    </form>
+                    <small class="text-muted">
+                        0.5 = Slow, 1.0 = Normal, 2.0 = Fast
+                    </small>
+                </div>
+            </div>
+        </div>
+        
+        @if (productionLine.CurrentWorkOrder != null)
+        {
+            <div class="card mb-4">
+                <div class="card-header bg-info text-white">
+                    <h5>Current Work Order</h5>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-4">Product</dt>
+                        <dd class="col-sm-8">@productionLine.CurrentWorkOrder.Product.Name</dd>
+                        
+                        <dt class="col-sm-4">Quantity</dt>
+                        <dd class="col-sm-8">@productionLine.CurrentWorkOrder.Quantity units</dd>
+                        
+                        <dt class="col-sm-4">Started</dt>
+                        <dd class="col-sm-8">@productionLine.CurrentWorkOrder.StartDate.ToString("g")</dd>
+                        
+                        <dt class="col-sm-4">Est. Completion</dt>
+                        <dd class="col-sm-8">@productionLine.CurrentWorkOrder.EstimatedEndDate.ToString("g")</dd>
+                    </dl>
+                    
+                    <div class="progress mb-3">
+                        @{
+                            var totalMinutes = (productionLine.CurrentWorkOrder.EstimatedEndDate - productionLine.CurrentWorkOrder.StartDate).TotalMinutes;
+                            var elapsedMinutes = (DateTime.Now - productionLine.CurrentWorkOrder.StartDate).TotalMinutes;
+                            var progressPercent = Math.Min(100, Math.Max(0, (elapsedMinutes / totalMinutes) * 100));
+                        }
+                        <div class="progress-bar" role="progressbar" style="width: @progressPercent.ToString("F0")%"
+                             aria-valuenow="@progressPercent.ToString("F0")" aria-valuemin="0" aria-valuemax="100">
+                            @progressPercent.ToString("F0")%
+                        </div>
+                    </div>
+                    
+                    <form asp-action="CompleteWorkOrder" method="post">
+                        <input type="hidden" name="lineId" value="@productionLine.Id" />
+                        <button type="submit" class="btn btn-success">Mark as Completed</button>
+                        <a asp-controller="WorkOrders" asp-action="Details" asp-route-id="@productionLine.CurrentWorkOrder.Id" 
+                           class="btn btn-outline-primary">View Details</a>
+                    </form>
+                </div>
+            </div>
+        }
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>Scheduled Work Orders</h5>
+            </div>
+            <div class="card-body">
+                @if (productionLine.WorkOrders != null && productionLine.WorkOrders.Any(wo => wo.Status == "Pending"))
+                {
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Scheduled Start</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var order in productionLine.WorkOrders.Where(wo => wo.Status == "Pending"))
+                            {
+                                <tr>
+                                    <td>@order.Product.Name</td>
+                                    <td>@order.Quantity</td>
+                                    <td>@order.StartDate.ToString("g")</td>
+                                    <td>
+                                        @if (productionLine.Status == "Stopped" && productionLine.CurrentWorkOrderId == null)
+                                        {
+                                            <form asp-action="StartWorkOrder" method="post" class="d-inline">
+                                                <input type="hidden" name="lineId" value="@productionLine.Id" />
+                                                <input type="hidden" name="workOrderId" value="@order.Id" />
+                                                <button type="submit" class="btn btn-sm btn-success">Start</button>
+                                            </form>
+                                        }
+                                        <a asp-controller="WorkOrders" asp-action="Details" asp-route-id="@order.Id" 
+                                           class="btn btn-sm btn-outline-info">Details</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p class="text-muted">No pending work orders assigned to this line.</p>
+                }
+            </div>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>Available Work Orders</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.PendingWorkOrders.Any())
+                {
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var order in Model.PendingWorkOrders)
+                            {
+                                <tr>
+                                    <td>@order.Product.Name</td>
+                                    <td>@order.Quantity</td>
+                                    <td>
+                                        <form asp-action="AssignWorkOrder" method="post" class="d-inline">
+                                            <input type="hidden" name="lineId" value="@productionLine.Id" />
+                                            <input type="hidden" name="workOrderId" value="@order.Id" />
+                                            <button type="submit" class="btn btn-sm btn-primary">Assign to Line</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p class="text-muted">No pending work orders available for assignment.</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
+
+<!-- Start Work Order Modal -->
+<div class="modal fade" id="startWorkOrderModal" tabindex="-1" aria-labelledby="startWorkOrderModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="startWorkOrderModalLabel">Start Work Order</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @if (Model.PendingWorkOrders.Any())
+                {
+                    <form asp-action="StartWorkOrder" method="post">
+                        <input type="hidden" name="lineId" value="@productionLine.Id" />
+                        <div class="mb-3">
+                            <label for="workOrderId" class="form-label">Select Work Order</label>
+                            <select name="workOrderId" id="workOrderId" class="form-select" required>
+                                @foreach (var order in Model.PendingWorkOrders)
+                                {
+                                    <option value="@order.Id">@order.Product.Name (@order.Quantity units)</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-success">Start Production</button>
+                        </div>
+                    </form>
+                }
+                else
+                {
+                    <p class="text-muted">No pending work orders available to start.</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function updateEfficiencyValue(val) {
+            document.getElementById('efficiencyValue').value = parseFloat(val).toFixed(1);
+        }
+        
+        document.getElementById('efficiencyValue').addEventListener('change', function() {
+            let value = parseFloat(this.value);
+            if (value < 0.5) value = 0.5;
+            if (value > 2.0) value = 2.0;
+            this.value = value.toFixed(1);
+            document.getElementById('efficiencyRange').value = value;
+        });
+    </script>
+}
