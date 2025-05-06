@@ -50,11 +50,21 @@
                 <div class="card-body">
                     <dl class="row">
                         @{
-                            var specs = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, string>>(Model.Specifications);
-                            foreach (var spec in specs)
+                            try
                             {
-                                <dt class="col-sm-4">@spec.Key</dt>
-                                <dd class="col-sm-8">@spec.Value</dd>
+                                var specs = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, string>>(Model.Specifications);
+                                if (specs != null)
+                                {
+                                    foreach (var spec in specs)
+                                    {
+                                        <dt class="col-sm-4">@spec.Key</dt>
+                                        <dd class="col-sm-8">@spec.Value</dd>
+                                    }
+                                }
+                            }
+                            catch
+                            {
+                                <dt class="col-sm-12">Error parsing specifications</dt>
                             }
                         }
                     </dl>

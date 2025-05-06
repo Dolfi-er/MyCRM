@@ -117,7 +117,6 @@ C:\Users\Mi\Desktop\Универ\Семестр 4\ПКС\5\MyCRM\bin\Debug\net9.
 C:\Users\Mi\Desktop\Универ\Семестр 4\ПКС\5\MyCRM\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\Mi\Desktop\Универ\Семестр 4\ПКС\5\MyCRM\obj\Debug\net9.0\scopedcss\bundle\MyCRM.styles.css
 C:\Users\Mi\Desktop\Универ\Семестр 4\ПКС\5\MyCRM\obj\Debug\net9.0\scopedcss\projectbundle\MyCRM.bundle.scp.css
-C:\Users\Mi\Desktop\Универ\Семестр 4\ПКС\5\MyCRM\obj\Debug\net9.0\compressed\jhf0nca8eu-b9sayid5wm.gz
 C:\Users\Mi\Desktop\Универ\Семестр 4\ПКС\5\MyCRM\obj\Debug\net9.0\compressed\rbbknc62dn-61n19gt1b8.gz
 C:\Users\Mi\Desktop\Универ\Семестр 4\ПКС\5\MyCRM\obj\Debug\net9.0\compressed\cqbpopc2ww-xtxxf3hu2r.gz
 C:\Users\Mi\Desktop\Универ\Семестр 4\ПКС\5\MyCRM\obj\Debug\net9.0\compressed\7wqpoirj8p-bqjiyaj88i.gz
@@ -204,3 +203,5 @@ C:\Users\Mi\Desktop\Универ\Семестр 4\ПКС\5\MyCRM\bin\Debug\net9.
 C:\Users\Mi\Desktop\Универ\Семестр 4\ПКС\5\MyCRM\obj\Debug\net9.0\MyCRM.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Mi\Desktop\Универ\Семестр 4\ПКС\5\MyCRM\obj\Debug\net9.0\compressed\8v3puctm3q-7wkzn9pw91.gz
 C:\Users\Mi\Desktop\Универ\Семестр 4\ПКС\5\MyCRM\obj\Debug\net9.0\compressed\d30vd2khem-7wkzn9pw91.gz
+C:\Users\Mi\Desktop\Универ\Семестр 4\ПКС\5\MyCRM\obj\Debug\net9.0\MyCRM.sourcelink.json
+C:\Users\Mi\Desktop\Универ\Семестр 4\ПКС\5\MyCRM\obj\Debug\net9.0\compressed\jhf0nca8eu-7wiowgat8u.gz

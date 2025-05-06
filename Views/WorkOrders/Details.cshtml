@@ -44,9 +44,9 @@
                         <h6>Production Progress</h6>
                         <div class="progress mb-3">
                             @{
-                                var totalMinutes = (workOrder.EstimatedEndDate - workOrder.StartDate).TotalMinutes;
+                                var productionTotalMinutes = (workOrder.EstimatedEndDate - workOrder.StartDate).TotalMinutes;
                                 var elapsedMinutes = (DateTime.Now - workOrder.StartDate).TotalMinutes;
-                                var progressPercent = Math.Min(100, Math.Max(0, (elapsedMinutes / totalMinutes) * 100));
+                                var progressPercent = Math.Min(100, Math.Max(0, (elapsedMinutes / productionTotalMinutes) * 100));
                             }
                             <div class="progress-bar" role="progressbar" style="width: @progressPercent.ToString("F0")%"
                                  aria-valuenow="@progressPercent.ToString("F0")" aria-valuemin="0" aria-valuemax="100">
@@ -148,9 +148,9 @@
                     <dt class="col-sm-6">Total Production Time</dt>
                     @{
                         float efficiencyFactor = workOrder.ProductionLine?.EfficiencyFactor ?? 1.0f;
-                        int totalMinutes = (int)Math.Ceiling(workOrder.Product.ProductionTimePerUnit * workOrder.Quantity / efficiencyFactor);
-                        var hours = totalMinutes / 60;
-                        var minutes = totalMinutes % 60;
+                        int calculatedTotalMinutes = (int)Math.Ceiling(workOrder.Product.ProductionTimePerUnit * workOrder.Quantity / efficiencyFactor);
+                        var hours = calculatedTotalMinutes / 60;
+                        var minutes = calculatedTotalMinutes % 60;
                     }
                     <dd class="col-sm-6">@hours h @minutes min</dd>
                 </dl>
