@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\MyCRM.7wkzn9pw91.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\wwwroot\\api-diagnostic.html",
+      "PackagePath": "staticwebassets\\api-diagnostic.html"
+    },
+    {
       "Id": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -255,6 +259,10 @@
     {
       "Id": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.map"
+    },
+    {
+      "Id": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\wwwroot\\test-product-form.html",
+      "PackagePath": "staticwebassets\\test-product-form.html"
     },
     {
       "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.MyCRM.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",

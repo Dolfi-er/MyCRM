@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "UX2p/qnaK5MQOQv7lMXl+BDW+pwSVDsAWZqgrPDMxUY=",
+  "Hash": "bRPCrzQ+afTREmJEkKDS3Ki5EUw7K8gQORalZDyMb+w=",
   "Source": "MyCRM",
   "BasePath": "_content/MyCRM",
   "Mode": "Default",
@@ -899,6 +899,27 @@
       "OriginalItemSpec": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\wwwroot\\lib\\jquery\\dist\\jquery.slim.js"
     },
     {
+      "Identity": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\obj\\Debug\\net9.0\\compressed\\noo2sdpfik-3atsqtrxgl.gz",
+      "SourceId": "MyCRM",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/MyCRM",
+      "RelativePath": "test-product-form#[.{fingerprint=3atsqtrxgl}]?.html.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\wwwroot\\test-product-form.html",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "vvg6s6isbq",
+      "Integrity": "BdFsDTUDLLexUzlOcAZUQLRrMjidy2NAqt+hp47a1qw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\wwwroot\\test-product-form.html"
+    },
+    {
       "Identity": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\obj\\Debug\\net9.0\\compressed\\ohlbcuetvq-ag7o75518u.gz",
       "SourceId": "MyCRM",
       "SourceType": "Discovered",
@@ -1319,6 +1340,27 @@
       "OriginalItemSpec": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
+      "Identity": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\obj\\Debug\\net9.0\\compressed\\yi7chxlce3-bvny90avhi.gz",
+      "SourceId": "MyCRM",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/MyCRM",
+      "RelativePath": "api-diagnostic#[.{fingerprint=bvny90avhi}]?.html.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\wwwroot\\api-diagnostic.html",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "xh1igf29wt",
+      "Integrity": "6xsHRpM49N6FSIdpuV66uIFv2g0uzdeFmPubE3KIbds=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\wwwroot\\api-diagnostic.html"
+    },
+    {
       "Identity": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\obj\\Debug\\net9.0\\compressed\\yoyiffv1sf-ft3s53vfgj.gz",
       "SourceId": "MyCRM",
       "SourceType": "Discovered",
@@ -1401,6 +1443,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\MyCRM.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\wwwroot\\api-diagnostic.html",
+      "SourceId": "MyCRM",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\wwwroot\\",
+      "BasePath": "_content/MyCRM",
+      "RelativePath": "api-diagnostic#[.{fingerprint}]?.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "bvny90avhi",
+      "Integrity": "qUlneDMBEqHXFnavmF6LvhKHr2oyROVu/1Uha3RWJAE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\api-diagnostic.html"
     },
     {
       "Identity": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\wwwroot\\css\\site.css",
@@ -2724,9 +2787,328 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\wwwroot\\test-product-form.html",
+      "SourceId": "MyCRM",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\wwwroot\\",
+      "BasePath": "_content/MyCRM",
+      "RelativePath": "test-product-form#[.{fingerprint}]?.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "3atsqtrxgl",
+      "Integrity": "O2EUvjAVw6ci1xsRDkkXpf7nzrXHJDImaKOe0pnF3Jo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\test-product-form.html"
     }
   ],
   "Endpoints": [
+    {
+      "Route": "api-diagnostic.bvny90avhi.html",
+      "AssetFile": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\obj\\Debug\\net9.0\\compressed\\yi7chxlce3-bvny90avhi.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000742942051"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1345"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6xsHRpM49N6FSIdpuV66uIFv2g0uzdeFmPubE3KIbds=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 21:45:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"qUlneDMBEqHXFnavmF6LvhKHr2oyROVu/1Uha3RWJAE=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "bvny90avhi"
+        },
+        {
+          "Name": "label",
+          "Value": "api-diagnostic.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-qUlneDMBEqHXFnavmF6LvhKHr2oyROVu/1Uha3RWJAE="
+        }
+      ]
+    },
+    {
+      "Route": "api-diagnostic.bvny90avhi.html",
+      "AssetFile": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\wwwroot\\api-diagnostic.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6395"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qUlneDMBEqHXFnavmF6LvhKHr2oyROVu/1Uha3RWJAE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 21:45:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "bvny90avhi"
+        },
+        {
+          "Name": "label",
+          "Value": "api-diagnostic.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-qUlneDMBEqHXFnavmF6LvhKHr2oyROVu/1Uha3RWJAE="
+        }
+      ]
+    },
+    {
+      "Route": "api-diagnostic.bvny90avhi.html.gz",
+      "AssetFile": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\obj\\Debug\\net9.0\\compressed\\yi7chxlce3-bvny90avhi.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1345"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6xsHRpM49N6FSIdpuV66uIFv2g0uzdeFmPubE3KIbds=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 21:45:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "bvny90avhi"
+        },
+        {
+          "Name": "label",
+          "Value": "api-diagnostic.html.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-6xsHRpM49N6FSIdpuV66uIFv2g0uzdeFmPubE3KIbds="
+        }
+      ]
+    },
+    {
+      "Route": "api-diagnostic.html",
+      "AssetFile": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\obj\\Debug\\net9.0\\compressed\\yi7chxlce3-bvny90avhi.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000742942051"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1345"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6xsHRpM49N6FSIdpuV66uIFv2g0uzdeFmPubE3KIbds=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 21:45:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"qUlneDMBEqHXFnavmF6LvhKHr2oyROVu/1Uha3RWJAE=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-qUlneDMBEqHXFnavmF6LvhKHr2oyROVu/1Uha3RWJAE="
+        }
+      ]
+    },
+    {
+      "Route": "api-diagnostic.html",
+      "AssetFile": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\wwwroot\\api-diagnostic.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6395"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qUlneDMBEqHXFnavmF6LvhKHr2oyROVu/1Uha3RWJAE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 21:45:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-qUlneDMBEqHXFnavmF6LvhKHr2oyROVu/1Uha3RWJAE="
+        }
+      ]
+    },
+    {
+      "Route": "api-diagnostic.html.gz",
+      "AssetFile": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\obj\\Debug\\net9.0\\compressed\\yi7chxlce3-bvny90avhi.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1345"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6xsHRpM49N6FSIdpuV66uIFv2g0uzdeFmPubE3KIbds=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 21:45:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-6xsHRpM49N6FSIdpuV66uIFv2g0uzdeFmPubE3KIbds="
+        }
+      ]
+    },
     {
       "Route": "css/site.7wiowgat8u.css",
       "AssetFile": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\obj\\Debug\\net9.0\\compressed\\jhf0nca8eu-7wiowgat8u.gz",
@@ -21878,6 +22260,304 @@
         {
           "Name": "integrity",
           "Value": "sha256-UQ1HN6OvNP1u7vT+lr1TxBmAwV92IJZ+fasRNVIedMU="
+        }
+      ]
+    },
+    {
+      "Route": "test-product-form.3atsqtrxgl.html",
+      "AssetFile": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\obj\\Debug\\net9.0\\compressed\\noo2sdpfik-3atsqtrxgl.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000576036866"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1735"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BdFsDTUDLLexUzlOcAZUQLRrMjidy2NAqt+hp47a1qw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 21:43:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"O2EUvjAVw6ci1xsRDkkXpf7nzrXHJDImaKOe0pnF3Jo=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3atsqtrxgl"
+        },
+        {
+          "Name": "label",
+          "Value": "test-product-form.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-O2EUvjAVw6ci1xsRDkkXpf7nzrXHJDImaKOe0pnF3Jo="
+        }
+      ]
+    },
+    {
+      "Route": "test-product-form.3atsqtrxgl.html",
+      "AssetFile": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\wwwroot\\test-product-form.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7235"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"O2EUvjAVw6ci1xsRDkkXpf7nzrXHJDImaKOe0pnF3Jo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 21:43:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3atsqtrxgl"
+        },
+        {
+          "Name": "label",
+          "Value": "test-product-form.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-O2EUvjAVw6ci1xsRDkkXpf7nzrXHJDImaKOe0pnF3Jo="
+        }
+      ]
+    },
+    {
+      "Route": "test-product-form.3atsqtrxgl.html.gz",
+      "AssetFile": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\obj\\Debug\\net9.0\\compressed\\noo2sdpfik-3atsqtrxgl.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1735"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BdFsDTUDLLexUzlOcAZUQLRrMjidy2NAqt+hp47a1qw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 21:43:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3atsqtrxgl"
+        },
+        {
+          "Name": "label",
+          "Value": "test-product-form.html.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-BdFsDTUDLLexUzlOcAZUQLRrMjidy2NAqt+hp47a1qw="
+        }
+      ]
+    },
+    {
+      "Route": "test-product-form.html",
+      "AssetFile": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\obj\\Debug\\net9.0\\compressed\\noo2sdpfik-3atsqtrxgl.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000576036866"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1735"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BdFsDTUDLLexUzlOcAZUQLRrMjidy2NAqt+hp47a1qw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 21:43:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"O2EUvjAVw6ci1xsRDkkXpf7nzrXHJDImaKOe0pnF3Jo=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-O2EUvjAVw6ci1xsRDkkXpf7nzrXHJDImaKOe0pnF3Jo="
+        }
+      ]
+    },
+    {
+      "Route": "test-product-form.html",
+      "AssetFile": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\wwwroot\\test-product-form.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7235"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"O2EUvjAVw6ci1xsRDkkXpf7nzrXHJDImaKOe0pnF3Jo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 21:43:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-O2EUvjAVw6ci1xsRDkkXpf7nzrXHJDImaKOe0pnF3Jo="
+        }
+      ]
+    },
+    {
+      "Route": "test-product-form.html.gz",
+      "AssetFile": "C:\\Users\\Mi\\Desktop\\Универ\\Семестр 4\\ПКС\\5\\MyCRM\\obj\\Debug\\net9.0\\compressed\\noo2sdpfik-3atsqtrxgl.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1735"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BdFsDTUDLLexUzlOcAZUQLRrMjidy2NAqt+hp47a1qw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 21:43:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-BdFsDTUDLLexUzlOcAZUQLRrMjidy2NAqt+hp47a1qw="
         }
       ]
     }

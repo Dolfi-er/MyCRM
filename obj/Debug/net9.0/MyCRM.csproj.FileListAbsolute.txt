@@ -205,3 +205,5 @@ C:\Users\Mi\Desktop\Универ\Семестр 4\ПКС\5\MyCRM\obj\Debug\net9.
 C:\Users\Mi\Desktop\Универ\Семестр 4\ПКС\5\MyCRM\obj\Debug\net9.0\compressed\d30vd2khem-7wkzn9pw91.gz
 C:\Users\Mi\Desktop\Универ\Семестр 4\ПКС\5\MyCRM\obj\Debug\net9.0\MyCRM.sourcelink.json
 C:\Users\Mi\Desktop\Универ\Семестр 4\ПКС\5\MyCRM\obj\Debug\net9.0\compressed\jhf0nca8eu-7wiowgat8u.gz
+C:\Users\Mi\Desktop\Универ\Семестр 4\ПКС\5\MyCRM\obj\Debug\net9.0\compressed\yi7chxlce3-bvny90avhi.gz
+C:\Users\Mi\Desktop\Универ\Семестр 4\ПКС\5\MyCRM\obj\Debug\net9.0\compressed\noo2sdpfik-3atsqtrxgl.gz

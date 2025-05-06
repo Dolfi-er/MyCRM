@@ -174,6 +174,36 @@
             if (@Json.Serialize(Model.AvailableMaterials.Any())) {
                 addMaterialBtn.click();
             }
+
+            // Form submission validation
+            document.querySelector('form').addEventListener('submit', function(e) {
+                // Check if at least one material is selected
+                const materialSelects = document.querySelectorAll('select[name="selectedMaterials"]');
+                if (materialSelects.length === 0) {
+                    alert('Please add at least one material to the product.');
+                    e.preventDefault();
+                    return false;
+                }
+
+                // Validate all material entries
+                let isValid = true;
+                materialSelects.forEach(function(select) {
+                    if (!select.value) {
+                        isValid = false;
+                    }
+                    
+                    const quantityInput = select.closest('.material-entry').querySelector('input[name="quantities"]');
+                    if (!quantityInput.value || parseFloat(quantityInput.value) <= 0) {
+                        isValid = false;
+                    }
+                });
+
+                if (!isValid) {
+                    alert('Please fill in all material fields correctly.');
+                    e.preventDefault();
+                    return false;
+                }
+            });
         });
     </script>
 }

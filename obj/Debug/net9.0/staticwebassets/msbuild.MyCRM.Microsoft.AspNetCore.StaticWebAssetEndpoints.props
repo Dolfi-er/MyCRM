@@ -1,5 +1,17 @@
 ﻿<Project>
   <ItemGroup>
+    <StaticWebAssetEndpoint Include="_content/MyCRM/api-diagnostic.bvny90avhi.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\api-diagnostic.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"bvny90avhi"},{"Name":"integrity","Value":"sha256-qUlneDMBEqHXFnavmF6LvhKHr2oyROVu/1Uha3RWJAE="},{"Name":"label","Value":"_content/MyCRM/api-diagnostic.html"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"6395"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022qUlneDMBEqHXFnavmF6LvhKHr2oyROVu/1Uha3RWJAE=\u0022"},{"Name":"Last-Modified","Value":"Tue, 06 May 2025 21:45:39 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyCRM/api-diagnostic.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\api-diagnostic.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-qUlneDMBEqHXFnavmF6LvhKHr2oyROVu/1Uha3RWJAE="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"6395"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022qUlneDMBEqHXFnavmF6LvhKHr2oyROVu/1Uha3RWJAE=\u0022"},{"Name":"Last-Modified","Value":"Tue, 06 May 2025 21:45:39 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/MyCRM/css/site.7wiowgat8u.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
@@ -767,6 +779,18 @@
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-eeBbgO2TY0Ow0gSZob7m1txSs9WaQJW\u002BrmY6nCIjFQ0="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2076"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022eeBbgO2TY0Ow0gSZob7m1txSs9WaQJW\u002BrmY6nCIjFQ0=\u0022"},{"Name":"Last-Modified","Value":"Mon, 05 May 2025 14:47:05 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyCRM/test-product-form.3atsqtrxgl.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\test-product-form.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"3atsqtrxgl"},{"Name":"integrity","Value":"sha256-O2EUvjAVw6ci1xsRDkkXpf7nzrXHJDImaKOe0pnF3Jo="},{"Name":"label","Value":"_content/MyCRM/test-product-form.html"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"7235"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022O2EUvjAVw6ci1xsRDkkXpf7nzrXHJDImaKOe0pnF3Jo=\u0022"},{"Name":"Last-Modified","Value":"Tue, 06 May 2025 21:43:05 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/MyCRM/test-product-form.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\test-product-form.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-O2EUvjAVw6ci1xsRDkkXpf7nzrXHJDImaKOe0pnF3Jo="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"7235"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022O2EUvjAVw6ci1xsRDkkXpf7nzrXHJDImaKOe0pnF3Jo=\u0022"},{"Name":"Last-Modified","Value":"Tue, 06 May 2025 21:43:05 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
   </ItemGroup>
 </Project>

@@ -1,0 +1,93 @@
+@model MyCRM.Models.Product
+
+@{
+    ViewData["Title"] = "Direct Create Product";
+}
+
+<h1>Create New Product (Direct)</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>Basic Product Information</h5>
+            </div>
+            <div class="card-body">
+                <form asp-action="DirectCreate" method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label">Name</label>
+                        <input asp-for="Name" class="form-control" required />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="Description" class="form-label">Description</label>
+                        <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="Category" class="form-label">Category</label>
+                        <input asp-for="Category" class="form-control" value="General" />
+                        <span asp-validation-for="Category" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="ProductionTimePerUnit" class="form-label">Production Time (minutes per unit)</label>
+                        <input asp-for="ProductionTimePerUnit" class="form-control" type="number" min="1" value="10" required />
+                        <span asp-validation-for="ProductionTimePerUnit" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="MinimalStock" class="form-label">Minimal Stock</label>
+                        <input asp-for="MinimalStock" class="form-control" type="number" min="0" value="5" />
+                        <span asp-validation-for="MinimalStock" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                        <button type="submit" class="btn btn-primary">Create Product</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>Troubleshooting</h5>
+            </div>
+            <div class="card-body">
+                <p>If you're having trouble creating products, here are some alternatives:</p>
+                
+                <div class="list-group mb-3">
+                    <a href="/test-product-form.html" class="list-group-item list-group-item-action">
+                        Try the HTML Form (API-based)
+                    </a>
+                    <a asp-action="SimpleCreate" class="list-group-item list-group-item-action">
+                        Try Simple Create
+                    </a>
+                    <a asp-action="Diagnostic" class="list-group-item list-group-item-action">
+                        Run Diagnostic
+                    </a>
+                </div>
+                
+                <div class="alert alert-info">
+                    <h6>Tips:</h6>
+                    <ul>
+                        <li>Make sure your database connection is working</li>
+                        <li>Check that the Product model matches your database schema</li>
+                        <li>Look for error messages in the application logs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
